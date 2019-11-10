@@ -1,23 +1,29 @@
 // JavaScript File
-window.onload = function search(){
+window.onload = function (){
     
     var searchbutton = document.getElementById("searchbutton");
-    var request = new XMLHttpRequest();
-    var url = "superheroes.php";
-    var response = request.responseText;
-    request.open('GET', url);
-    request.send();
+    var request;
+
+    searchbutton.addEventListener('click', function(element){
+        element.preventDefault();
+        request = new XMLHttpRequest();
+        var url = "superheroes.php";
+        request.onreadystatechange = search;
+        request.open('GET', url);
+        request.send();
+        
+    });
     
-    searchbutton.onclick = function search(){
-        //request.onreadystatechange = function(){
-            if (this.readyState === 4){
+    
+    function search(){
+            if (this.readyState === XMLHttpRequest.DONE){
                 if (this.status === 200){
+                    var response = request.responseText;
                     alert(response);
-                }
-                else{
+                }else{
                     alert('There was an error!');
                 }
             }
-    };
+    }
     
-}
+};
