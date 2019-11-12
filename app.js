@@ -16,6 +16,7 @@ window.onload = function (){
         request.open('GET', url);
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         request.send('search=' + encodeURIComponent(search) );
+        
     });
     
     
@@ -24,6 +25,7 @@ window.onload = function (){
             if (request.status === 200){
                 var response = request.responseText;
                 result.innerHTML = response;
+                url = "superheroes.php";
             }else{
                 alert('There was an error with the request!');
             }
