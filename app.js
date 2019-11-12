@@ -1,29 +1,33 @@
 // JavaScript File
 window.onload = function (){
     
-    var searchbutton = document.getElementById("searchbutton");
+    var searchbtn = document.querySelector('#searchbtn');
+    var result = document.querySelector('#result');
     var request;
 
-    searchbutton.addEventListener('click', function(element){
+    searchbtn.addEventListener('click', function(element){
         element.preventDefault();
+        
         request = new XMLHttpRequest();
+        var input = document.querySelector('#search').value;
+        
         var url = "superheroes.php";
         request.onreadystatechange = search;
         request.open('GET', url);
-        request.send();
-        
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.send('search=' + encodeURIComponent(search) );
     });
     
     
     function search(){
-            if (this.readyState === XMLHttpRequest.DONE){
-                if (this.status === 200){
-                    var response = request.responseText;
-                    alert(response);
-                }else{
-                    alert('There was an error!');
-                }
+        if (request.readyState === XMLHttpRequest.DONE){
+            if (request.status === 200){
+                var response = request.responseText;
+                result.innerHTML = response;
+            }else{
+                alert('There was an error with the request!');
             }
+        }
     }
     
 };

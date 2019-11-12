@@ -3,13 +3,43 @@
     <head>
         <title>Lab 6 </title>
         <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
             header{
+                border: 3px solid #456879 ;
                 color: black;
-                font-size: 18px;
+                font-size: 20px;
+                background-color: #48D1CC;
+                text-align: center;
+                padding: 1em;
             }
             body{
-                background-color: grey;
+              background: #F0FFF0;
             }
+            
+            .search {
+              width: 50%;
+              border: 3px solid #00B4CC;
+              border-right: none;
+              padding: 5px;
+              height: 20px;
+              border-radius: 5px 0 0 5px;
+              outline: none;
+              color: #9DBFAF;
+            }
+            
+            .searchbtn {
+              width: 60px;
+              height: 36px;
+              border: 1px solid #00B4CC;
+              background: #00B4CC;
+              text-align: center;
+              color: #fff;
+              border-radius: 0 5px 5px 0;
+              cursor: pointer;
+              position: relative;
+            }
+            
+            
         </style>
         <script src="app.js"></script>
     </head>
@@ -18,9 +48,22 @@
         <header>
             <h1>Avengers Character Search</h1>
         </header><br>
-        
-        <div id="searchbutton">
-          <button id="searchbutton">Search</button>
+        <h2>Search by Full Name or Alias</h2>
+        <br>
+        <div class="wrap">
+            <div class="searchdiv">
+                <form class="form" method="post" action="">
+                    
+                    <input type="text" id="search" name="search" class="search" placeholder="  eg. Captain America or Steve Rodgers" title="Type in a name"/>
+                    <button type="submit" name="search" class="searchbtn" id="searchbtn">Search</button>
+                    <i class="fa fa-search"></i>
+                </form>
+            </div>
         </div>
+        <br>
+        <h2>Result</h2>
+        <hr>
+        <div id="result"> </div>
+        
     </body>
 </html>

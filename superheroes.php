@@ -62,7 +62,27 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
-
+if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+  if(!empty($_GET['search']) ){
+    foreach($superheroes as $superhero) {
+      if ($superhero['name']===$_GET['search']){
+        echo $superhero['name'];
+        echo $superhero['alias'];
+        echo $superhero['biography'];
+      }
+      if ($superhero['alias']===$_GET['search']){
+        echo $superhero['name'];
+        echo $superhero['alias'];
+        echo $superhero['biography'];
+      }
+      //if ($superhero['alias']!==$_GET['search']){
+       // echo "SUPERHERO NOT FOUND";
+      }
+    }
+  }
+ // if(empty($_GET['search']) ){
+   // echo ($_GET['search']);
+ // };
 ?>
 
 <ul>
